@@ -63,37 +63,37 @@ const processSteps = [
     step: "01",
     title: "Consultation",
     description: "We understand your needs, style, budget and space.",
-    image: "/icons/consultation.png",
+    image: "/icons/consultation-v2.png",
   },
   {
     step: "02",
     title: "Design & Planning",
     description: "Custom concepts and detailed plans shaped around your home.",
-    image: "/icons/planning.png",
+    image: "/icons/planning-v2.png",
   },
   {
     step: "03",
     title: "Material Selection",
     description: "We choose premium finishes, fixtures and textures together.",
-    image: "/icons/selection.png",
+    image: "/icons/selection-v2.png",
   },
   {
     step: "04",
     title: "Crafting",
     description: "Skilled artisans build every piece with accuracy and care.",
-    image: "/icons/crafting.png",
+    image: "/icons/crafting-v2.png",
   },
   {
     step: "05",
     title: "Delivery & Installation",
     description: "Our team installs everything cleanly and precisely.",
-    image: "/icons/delivery.png",
+    image: "/icons/delivery-v2.png",
   },
   {
     step: "06",
     title: "Aftercare Support",
     description: "We stay with you after handover for guidance and support.",
-    image: "/icons/support.png",
+    image: "/icons/support-v2.png",
   },
 ];
 
@@ -121,10 +121,26 @@ const projects = [
 ];
 
 const qualities = [
-  "Premium wood & finishes carefully selected for strength and beauty.",
-  "High quality hardware sourced for durability and quiet performance.",
-  "Expert craftsmanship by detail-focused makers and installers.",
-  "Sustainable practices with responsible sourcing wherever possible.",
+  {
+    title: "Premium Wood & Finishes",
+    description: "Carefully selected for strength and beauty.",
+    image: "/icons/2-removebg-preview.png",
+  },
+  {
+    title: "High Quality Hardware",
+    description: "Durable and reliable, sourced from trusted brands.",
+    image: "/icons/3-removebg-preview.png",
+  },
+  {
+    title: "Expert Craftsmanship",
+    description: "Every detail is crafted by skilled hands with precision.",
+    image: "/icons/4-removebg-preview.png",
+  },
+  {
+    title: "Sustainable Practices",
+    description: "Responsibly sourced materials for a better tomorrow.",
+    image: "/icons/sustainable-practices.png",
+  },
 ];
 
 const quickLinks = ["About Us", "Collections", "Kitchens", "Furniture", "Projects", "Contact Us"];
@@ -235,10 +251,25 @@ export default function Home() {
           </div>
         </header>
 
-        <div className={styles.heroGrid}>
+        <div className={styles.heroStage}>
+          <div className={styles.heroVisual} aria-hidden="true">
+            <Image
+              src="/hero-kitchen.png"
+              alt="Premium walnut kitchen interior"
+              fill
+              priority
+              className={styles.coverImage}
+              sizes="100vw"
+            />
+            <div className={styles.heroVisualOverlay} />
+          </div>
           <div className={styles.heroCopy}>
             <p className={styles.kicker}>Timeless design. Exceptional living.</p>
-            <h1>Furniture & Kitchens Crafted for Life</h1>
+            <h1>
+              Furniture & Kitchens
+              <br />
+              Crafted for Life
+            </h1>
             <p className={styles.heroText}>
               We design and build elegant furniture and premium kitchens that
               elevate every space with comfort, style and lasting quality.
@@ -251,18 +282,6 @@ export default function Home() {
                 View Kitchens
               </a>
             </div>
-          </div>
-
-          <div className={styles.heroVisual} aria-hidden="true">
-            <Image
-              src="/hero-kitchen.png"
-              alt="Premium walnut kitchen interior"
-              fill
-              priority
-              className={styles.coverImage}
-              sizes="(max-width: 1180px) 100vw, 60vw"
-            />
-            <div className={styles.heroVisualOverlay} />
           </div>
         </div>
 
@@ -398,9 +417,20 @@ export default function Home() {
           </div>
           <div className={styles.qualityList}>
             {qualities.map((item) => (
-              <div key={item} className={styles.qualityItem}>
-                <span className={styles.qualityDot} />
-                <p>{item}</p>
+              <div key={item.title} className={styles.qualityItem}>
+                <div className={styles.qualityIconWrap}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className={styles.qualityIconImage}
+                    sizes="32px"
+                  />
+                </div>
+                <div className={styles.qualityCopy}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
               </div>
             ))}
           </div>

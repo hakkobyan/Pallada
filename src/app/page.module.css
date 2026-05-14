@@ -5,7 +5,6 @@
   color: #2c2119;
 }
 
-.heroSection,
 .sectionLight,
 .processSection,
 .projectsSection,
@@ -19,6 +18,7 @@
   position: relative;
   min-height: 100svh;
   padding-top: 1.2rem;
+  padding-inline: 0;
   background:
     linear-gradient(180deg, rgba(10, 7, 4, 0.88), rgba(17, 11, 7, 0.72)),
     radial-gradient(circle at top left, rgba(197, 146, 80, 0.18), transparent 25%),
@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 0.6rem 0 1.4rem;
+  padding: 0.6rem clamp(1.25rem, 4vw, 3rem) 1.4rem;
 }
 
 .brand {
@@ -76,7 +76,7 @@
   width: 2.3rem;
   height: 2.3rem;
   border: 1px solid rgba(232, 204, 162, 0.28);
-  border-radius: 999px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.03);
   position: relative;
 }
@@ -120,7 +120,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.45rem;
+  border-radius: 0;
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
@@ -132,18 +132,20 @@
   font-weight: 600;
 }
 
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(340px, 1.25fr);
-  gap: 2rem;
-  align-items: center;
-  min-height: calc(100svh - 6rem);
-  padding-block: 2rem;
+.heroStage {
+  position: relative;
+  min-height: calc(100svh - 10.5rem);
+  margin-top: 0;
 }
 
 .heroCopy {
-  max-width: 35rem;
-  padding: clamp(1rem, 2vw, 2rem) 0;
+  position: absolute;
+  left: clamp(1.5rem, 6vw, 4.5rem);
+  top: 50%;
+  z-index: 2;
+  max-width: 50rem;
+  padding: 0;
+  transform: translateY(-50%);
 }
 
 .kicker {
@@ -167,12 +169,13 @@
 }
 
 .heroCopy h1 {
-  font-size: clamp(3.4rem, 7vw, 5.6rem);
+  max-width: 15ch;
+  font-size: clamp(3.4rem, 6.4vw, 5.5rem);
 }
 
 .heroText {
   margin-top: 1.5rem;
-  max-width: 29rem;
+  max-width: 33rem;
   color: rgba(247, 239, 230, 0.78);
   font-size: 1.06rem;
   line-height: 1.8;
@@ -213,18 +216,18 @@
 
 .heroVisual {
   position: relative;
-  min-height: 42rem;
+  min-height: calc(100svh - 10.5rem);
   overflow: hidden;
-  border: 1px solid rgba(220, 182, 120, 0.08);
-  border-radius: 1.6rem;
+  border-top: 1px solid rgba(220, 182, 120, 0.08);
+  border-bottom: 1px solid rgba(220, 182, 120, 0.08);
   background:
     linear-gradient(180deg, rgba(18, 12, 8, 0.05), rgba(18, 12, 8, 0.4)),
     linear-gradient(180deg, #2a1a11 0%, #18100c 100%);
-  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.35);
 }
 
 .coverImage {
   object-fit: cover;
+  object-position: center 58%;
 }
 
 .heroVisualOverlay {
@@ -232,14 +235,14 @@
   inset: 0;
   background:
     linear-gradient(180deg, rgba(20, 13, 8, 0.12), rgba(20, 13, 8, 0.38)),
-    linear-gradient(90deg, rgba(22, 14, 9, 0.16), transparent 28%, rgba(22, 14, 9, 0.14));
+    linear-gradient(90deg, rgba(18, 12, 8, 0.82) 0%, rgba(18, 12, 8, 0.62) 28%, rgba(18, 12, 8, 0.18) 52%, rgba(18, 12, 8, 0.08) 100%);
 }
 
 .featureBar {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
-  padding: 1.25rem 0 2rem;
+  padding: 1.25rem clamp(1.25rem, 4vw, 3rem) 2rem;
 }
 
 .featureCard {
@@ -330,7 +333,7 @@
 
 .spaceCard,
 .projectCard {
-  border-radius: 1.15rem;
+  border-radius: 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(106, 76, 48, 0.08);
@@ -507,30 +510,54 @@
 .materialImage {
   position: relative;
   min-height: 23rem;
-  border-radius: 1.25rem;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 24px 50px rgba(68, 42, 24, 0.08);
 }
 
 .qualityList {
   display: grid;
-  gap: 1rem;
+  gap: 1.05rem;
+  max-width: 18.5rem;
 }
 
 .qualityItem {
   display: flex;
-  gap: 0.9rem;
+  gap: 0.95rem;
   align-items: flex-start;
 }
 
-.qualityDot {
-  width: 0.8rem;
-  height: 0.8rem;
-  margin-top: 0.5rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ddb46d, #ab7738);
-  box-shadow: 0 0 0 0.35rem rgba(221, 180, 109, 0.16);
+.qualityIconWrap {
+  position: relative;
+  width: 2.85rem;
+  height: 2.85rem;
+  margin-top: 0.06rem;
   flex: 0 0 auto;
+  color: #c49450;
+}
+
+.qualityIconWrap .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0.4rem;
+}
+
+.qualityIconImage {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.qualityCopy h3 {
+  margin-bottom: 0.15rem;
+  color: #3c2b20;
+  font-size: 0.96rem;
+  line-height: 1.3;
+}
+
+.qualityCopy p {
+  color: #6f5c4e;
+  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .testimonialSection {
@@ -544,7 +571,7 @@
 .testimonialCard {
   margin-top: 1.8rem;
   padding: 1.6rem;
-  border-radius: 1.2rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(106, 76, 48, 0.08);
   box-shadow: 0 24px 50px rgba(68, 42, 24, 0.08);
@@ -579,7 +606,7 @@
   height: 2.8rem;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 0;
   background: linear-gradient(135deg, #d2b188, #9b6b39);
   color: #fff;
   font-weight: 700;
@@ -591,7 +618,7 @@
 
 .livingShowcase {
   min-height: 100%;
-  border-radius: 1.25rem;
+  border-radius: 0;
   box-shadow: 0 24px 50px rgba(68, 42, 24, 0.08);
 }
 
@@ -637,7 +664,7 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid rgba(230, 201, 154, 0.18);
   color: #d9b06c;
   font-size: 0.78rem;
@@ -648,7 +675,7 @@
   display: flex;
   margin-top: 1rem;
   border: 1px solid rgba(230, 201, 154, 0.2);
-  border-radius: 0.65rem;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -690,8 +717,9 @@
     display: none;
   }
 
+  .heroStage,
   .heroVisual {
-    min-height: 34rem;
+    min-height: 38rem;
   }
 }
 
@@ -707,7 +735,6 @@
     justify-content: flex-start;
   }
 
-  .heroGrid,
   .featureBar,
   .spaceGrid,
   .projectGrid,
@@ -715,12 +742,24 @@
     grid-template-columns: 1fr;
   }
 
+  .heroStage {
+    min-height: auto;
+  }
+
+  .heroCopy {
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 50%;
+    max-width: 30rem;
+  }
+
   .processCard p {
     max-width: 18rem;
   }
 
   .heroVisual {
-    min-height: 29rem;
+    min-height: 32rem;
   }
 
   .featureCard {
@@ -754,9 +793,14 @@
     font-size: 2.35rem;
   }
 
+  .heroStage,
   .heroVisual {
-    min-height: 24rem;
-    border-radius: 1rem;
+    min-height: 27rem;
+  }
+
+  .heroCopy {
+    left: 1rem;
+    right: 1rem;
   }
 
   .testimonialCard {
